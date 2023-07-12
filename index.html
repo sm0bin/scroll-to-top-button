@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Go to Top Button</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- <link rel="stylesheet" type="text/css" href="styles.css"> -->
+    <style>
+        body {
+            /* Adjust this value as per your webpage height */
+            height: 2000px;
+
+            position: relative;
+        }
+
+        #goTopButton {
+            /* Hide the button by default */
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 10px;
+            background-color: #555;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 1.25rem;
+            z-index: 10;
+            margin: auto;
+            width: 50px;
+            height: 50px;
+            /* border-radius: 50%; */
+            border-radius: 8px;
+            color: white;
+        }
+
+        #goTopButton:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- <button id="goTopButton">Go to Top</button> -->
+    <button id="goTopButton"><i class="fa-solid fa-jet-fighter-up"></i></button>
+
+    <!-- Your webpage content here -->
+    <main>
+        <!-- <div class="jet"><a href="#start"><i class="fa-solid fa-jet-fighter-up"></i></a></div> -->
+        <div id="class-1">
+            <h1>Lorem ipsum dolor sit amet.</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur rerum dolorem neque numquam illo
+                architecto a doloribus nihil obcaecati quas.</p>
+        </div>
+        <div class="class-2">
+            <h1>Alias suscipit neque unde similique!</h1>
+            <p>Voluptatem fugit perspiciatis natus deleniti veritatis recusandae accusamus pariatur, quisquam obcaecati
+                molestias, nesciunt provident porro labore deserunt repellendus exercitationem alias?</p>
+        </div>
+        <div class="class-3">
+            <h1>In ipsum at facere aliquid.</h1>
+            <p>Amet nihil saepe unde omnis rerum quos, sint blanditiis repudiandae dicta laborum dolor modi veniam
+                exercitationem facere quae sapiente tempore?</p>
+        </div>
+        <div class="class-4">
+            <h1>Non officiis adipisci ipsam tenetur!</h1>
+            <p>Esse, quas est itaque reiciendis vitae ut aperiam laborum accusamus minus consequatur dolorum officia
+                eaque necessitatibus magnam quisquam, sit impedit.</p>
+        </div>
+        <div class="class-5">
+            <h1 id="last">Repudiandae architecto error dolor laboriosam.</h1>
+            <p>Deleniti cumque, saepe tenetur reprehenderit repellendus dolore animi pariatur modi quasi quidem. Ipsam
+                porro vel id, illo quae asperiores eum.</p>
+        </div>
+    </main>
+
+    <!-- <script src="script.js"></script> -->
+    <script>
+        // Helper function to animate scrolling
+        function scrollToTop(duration) {
+            const startingY = window.pageYOffset;
+            const diff = 0 - startingY;
+            let start;
+
+            // Animation function
+            window.requestAnimationFrame(function step(timestamp) {
+                if (!start) start = timestamp;
+                const time = timestamp - start;
+                const percentage = Math.min(time / duration, 1);
+                window.scrollTo(0, startingY + diff * percentage);
+                if (time < duration) {
+                    window.requestAnimationFrame(step);
+                }
+            });
+        }
+
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                document.getElementById("goTopButton").style.display = "block";
+            } else {
+                document.getElementById("goTopButton").style.display = "none";
+            }
+        }
+
+        document.getElementById("goTopButton").onclick = function () {
+            scrollToTop(500); // Adjust the duration (in milliseconds) as desired
+        };
+
+    </script>
+</body>
+
+</html>
